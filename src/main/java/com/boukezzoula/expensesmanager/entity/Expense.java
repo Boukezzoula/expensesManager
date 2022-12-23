@@ -2,7 +2,7 @@ package com.boukezzoula.expensesmanager.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import jakarta.persistence.Id;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Expense {
 
-	@Id
+	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
 	
