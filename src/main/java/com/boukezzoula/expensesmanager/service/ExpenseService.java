@@ -1,6 +1,7 @@
 package com.boukezzoula.expensesmanager.service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -31,5 +32,22 @@ public class ExpenseService {
 		ExpenseDto expenseDto = modelMapper.map(exp, ExpenseDto.class);
 		return expenseDto;
 		
+	}
+	
+	public ExpenseDto saveExpense(ExpenseDto expenseDto) {
+	Expense expense =	mapToEntity(expenseDto);
+	
+	expense = expenseRepo.save(expense);
+	
+	return mapToDto(expense);
+	
+	}
+
+	private Expense mapToEntity(ExpenseDto expenseDto) {
+		Expense expense = modelMapper.map(expenseDto, Expense.class);
+		
+		expense.setExpenseId(UUID.randomUUID().toString());
+		
+		return expense;
 	}
 }
